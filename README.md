@@ -73,39 +73,44 @@ Desarrolla procedimientos almacenados (PROCEDURE) y eventos (EVENT) en MySQL par
 
 ## 1. 📅 Resumen Diario Único
 Crear un procedimiento y evento que genere un resumen de ventas una sola vez, al finalizar el día anterior, y luego el evento se elimine automáticamente.
+```
 📌 Instrucciones
 Nombre del procedimiento: generar_resumen_diario
 Nombre del evento: ev_resumen_diario_unico
 Requiere: ON COMPLETION NOT PRESERVE
-
+```
 ## 2. 📆 Resumen Semanal Recurrente
 Crear un procedimiento y evento que cada lunes a la 01:00 AM calcule el total de pedidos e ingresos de la semana pasada, y se siga ejecutando semanalmente.
+```
 📌 Instrucciones
 Nombre del procedimiento: generar_resumen_semanal
 Nombre del evento: ev_resumen_semanal
 Requiere: ON COMPLETION PRESERVE
-
+```
 ## 3. ⚠️ Alerta de Stock Bajo Única
 Crear un procedimiento y evento que detecte ingredientes con stock < 5 y registre alertas una única vez (ej. durante el arranque del sistema), eliminando luego el evento.
+```
 📌 Instrucciones
 Nombre del procedimiento: alerta_stock_bajo
 Nombre del evento: ev_alerta_stock_bajo_unica
 Requiere: ON COMPLETION NOT PRESERVE
-
+```
 ## 4. 🔁 Monitoreo Continuo de Stock
 Crear un procedimiento y evento que cada 30 minutos revise los ingredientes con stock < 10 y registre alertas, dejando el evento activo permanentemente.
+```
 📌 Instrucciones
 Nombre del procedimiento: monitorear_stock_bajo
 Nombre del evento: ev_monitor_stock_bajo
 Requiere: ON COMPLETION PRESERVE
-
+```
 ## 5. 🧹 Limpieza de Resúmenes Antiguos
 Crear un procedimiento y evento que una sola vez elimine de resumen_ventas los registros con fecha anterior a hace 365 días, y luego el evento se elimine.
+```
 📌 Instrucciones
 Nombre del procedimiento: purgar_resumen_antiguo
 Nombre del evento: ev_purgar_resumen_antiguo
 Requiere: ON COMPLETION NOT PRESERVE
-
+```
 ## ✅ Consideraciones
 
 - Asegúrate de tener el programador de eventos activo:
