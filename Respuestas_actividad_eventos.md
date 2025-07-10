@@ -1,10 +1,12 @@
 ## ACTIVIDAD EVENTOS.
 
+
 ## 📌 Siga las instrucciones: 
-### - Tener MySQL.
-### - Crear la base de datos y seleccionarla para trabajar en ella.
-### - Crear las tablas.
-### - Crear los procedimientos y eventos que se evidencian en las respuestas de los ejercicios propuestos.
+- Tener MySQL.
+- Crear la base de datos y seleccionarla para trabajar en ella.
+- Crear las tablas.
+- Crear los procedimientos y eventos que se evidencian en las respuestas de los ejercicios propuestos.
+
 
 ### BASE DE DATOS
 
@@ -12,6 +14,7 @@
 CREATE DATABASE pizza;
 USE pizza;
 ```
+
 -- TABLAS 
 --resumen_ventas
 ```
@@ -22,6 +25,7 @@ total_ingresos DECIMAL(12,2),
 creado_en DATETIME DEFAULT CURRENT_TIMESTAMP
 );
 ```
+
 --ingrediente
 ```
 CREATE TABLE ingrediente (
@@ -30,6 +34,7 @@ CREATE TABLE ingrediente (
     stock INT 
 );  
 ```
+
 --alerta_stock
 ```
 CREATE TABLE IF NOT EXISTS alerta_stock (
@@ -41,6 +46,7 @@ CREATE TABLE IF NOT EXISTS alerta_stock (
   FOREIGN KEY (ingrediente_id) REFERENCES ingrediente(id)
 );
 ```
+
 --pedidos
 ```
 CREATE TABLE pedidos (
@@ -50,12 +56,14 @@ CREATE TABLE pedidos (
 );
 ```
 
+
 ## DATOS DE PRUBA:
 ```
 INSERT INTO ingrediente (nombre, stock) VALUES ('Queso mozzarella', 3), ('Pepperoni', 12), ('Jamón', 4), ('Champiñones', 7), ('Tomate', 2), ('Aceitunas', 9);
 
 INSERT INTO pedidos (fecha_pedido, total) VALUES (NOW() - INTERVAL 1 DAY, 150.00), (NOW() - INTERVAL 1 DAY, 220.50), (NOW() - INTERVAL 8 DAY, 180.75), (NOW() - INTERVAL 5 DAY, 205.25), (NOW() - INTERVAL 3 DAY, 99.99), (NOW() - INTERVAL 7 DAY, 130.00);
 ```
+
 
 1. 📆 Resumen Diario Único : crear un evento que genere un resumen de ventas **una sola vez** al finalizar el día de ayer y luego se elimine automáticamente llamado `ev_resumen_diario_unico`.
 
