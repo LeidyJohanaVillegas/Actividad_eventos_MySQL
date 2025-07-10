@@ -65,7 +65,7 @@ INSERT INTO pedidos (fecha_pedido, total) VALUES (NOW() - INTERVAL 1 DAY, 150.00
 ```
 
 
-1. 📆 Resumen Diario Único : crear un evento que genere un resumen de ventas **una sola vez** al finalizar el día de ayer y luego se elimine automáticamente llamado `ev_resumen_diario_unico`.
+# 1. 📆 Resumen Diario Único : crear un evento que genere un resumen de ventas **una sola vez** al finalizar el día de ayer y luego se elimine automáticamente llamado `ev_resumen_diario_unico`.
 
 PROCEDIMIENTO:
 ```
@@ -87,7 +87,7 @@ ON COMPLETION NOT PRESERVE
 DO CALL generar_resumen_diario();
 ```
 
-2. 📆 Resumen Semanal Recurrente: cada lunes a las 01:00 AM, generar el total de pedidos e ingresos de la semana pasada, **manteniendo** el evento para que siga ejecutándose cada semana llamado `ev_resumen_semanal`.
+# 2. 📆 Resumen Semanal Recurrente: cada lunes a las 01:00 AM, generar el total de pedidos e ingresos de la semana pasada, **manteniendo** el evento para que siga ejecutándose cada semana llamado `ev_resumen_semanal`.
 
 PROCEDIMIENTO:
 ```
@@ -110,7 +110,7 @@ ON COMPLETION PRESERVE
 DO CALL generar_resumen_semanal();
 ```
 
-3. ⚠️ Alerta de Stock Bajo Única: en un futuro arranque del sistema (requerimiento del sistema), generar una única pasada de alertas (`alerta_stock`) de ingredientes con stock < 5, y luego autodestruir el evento.
+# 3. ⚠️ Alerta de Stock Bajo Única: en un futuro arranque del sistema (requerimiento del sistema), generar una única pasada de alertas (`alerta_stock`) de ingredientes con stock < 5, y luego autodestruir el evento.
 
 PROCEDIMIENTO:
 ```
@@ -132,7 +132,7 @@ ON COMPLETION NOT PRESERVE
 DO CALL alerta_stock_bajo();
 ```
 
-4. 🔁 Monitoreo Continuo de Stock: cada 30 minutos, revisar ingredientes con stock < 10 e insertar alertas en `alerta_stock`, **dejando** el evento activo para siempre llamado `ev_monitor_stock_bajo`.
+# 4. 🔁 Monitoreo Continuo de Stock: cada 30 minutos, revisar ingredientes con stock < 10 e insertar alertas en `alerta_stock`, **dejando** el evento activo para siempre llamado `ev_monitor_stock_bajo`.
 
 PROCEDIMIENTO:
 ```
@@ -155,7 +155,7 @@ ON COMPLETION PRESERVE
 DO CALL monitorear_stock_bajo();
 ```
 
-5. 🧹 Limpieza de Resúmenes Antiguos: una sola vez, eliminar de `resumen_ventas` los registros con fecha anterior a hace 365 días y luego borrar el evento llamado `ev_purgar_resumen_antiguo`.
+# 5. 🧹 Limpieza de Resúmenes Antiguos: una sola vez, eliminar de `resumen_ventas` los registros con fecha anterior a hace 365 días y luego borrar el evento llamado `ev_purgar_resumen_antiguo`.
 
 PROCEDIMIENTO:
 ```
